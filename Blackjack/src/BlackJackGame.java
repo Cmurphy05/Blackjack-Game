@@ -245,24 +245,34 @@ public class BlackJackGame {
 				player.chipValue += wagerReturn;
 			}
 			
-			System.out.println();
-			System.out.println("Would you like to play again?");
-			String playAgain = scanner.next();
+			boolean endOfGame = true;
 			
-			if(playAgain.equalsIgnoreCase("yes")) {
-				player.reset();
-				dealer.reset();
-				numPlayerPlay = 0;
-				numPlay++;
-				play = true;
+			while(endOfGame) {
+				
 				System.out.println();
-				System.out.println("Great let's play again!");
-			}
-			
-			else {
-				play = false;
-				System.out.println();
-				System.out.println("Ok. Shutting down.");
+				System.out.println("Would you like to play again?");
+				String playAgain = scanner.next();
+				
+				if(playAgain.equalsIgnoreCase("yes")) {
+					player.reset();
+					dealer.reset();
+					numPlayerPlay = 0;
+					numPlay++;
+					play = true;
+					System.out.println();
+					System.out.println("Great let's play again!");
+					break;
+				}
+				
+				else if(playAgain.equalsIgnoreCase("no")) {
+					play = false;
+					System.out.println();
+					System.out.println("Ok. Shutting down.");
+					break;
+				}
+				else {
+					System.out.println("That is not a valid response.");
+				}
 			}
 		
 		}
